@@ -18,7 +18,7 @@ type Account(accountNumber : string, balance : float) =
     member this.Print() = 
         printfn "Account Number: %s" this.AccountNumber
         printfn "Account Balance: £%.2f" this.Balance
-
+// Checks the account balance to provide the right message regarding the account ballance.   
 let CheckAccount (account : Account) =
     match account with
     | account when account.Balance < 10.0 -> printfn "Balance is low, As you are near your limit please ensure there is enough money for coming payments."
@@ -30,13 +30,14 @@ let PrintSequence(s : seq<Account>) =
 
 [<EntryPoint>]
 let main argv =
-    // Task 2 Accounts/Balances  
+    // Task 2 Accounts/Balances   Shows the active and available acounts with their balances.
     let acc1 = new Account("01", 0.0)
     let acc2 = new Account("02", 51.0)
     let acc3 = new Account("03", 5.0)
     let acc4 = new Account("04", 75.0)
     let acc5 = new Account("05", 50.0)
     let acc6 = new Account("06", 96.0) 
+    // Checks the individual account 
     CheckAccount(acc1)
     CheckAccount(acc2)
     CheckAccount(acc3)
@@ -52,6 +53,7 @@ let main argv =
     let seqBalGreater50 =
         seq { for acc in accounts do if acc.Balance >= 50.0 then acc }
 
+// This will pring the results into 2 seperated lists that show balances and if they have a good balance or low,
     printfn ""
 
     printfn "---- Account Balance of < 50 -----------"
@@ -61,4 +63,5 @@ let main argv =
 
     printfn "---- Account Balance of >= 50 ----------"
     PrintSequence(seqBalGreater50)
-    0
+    
+  
